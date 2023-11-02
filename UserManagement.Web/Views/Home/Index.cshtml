@@ -1,0 +1,12 @@
+﻿@using Westwind.AspNetCore.Markdown
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@Markdown.ParseHtmlStringFromFile("../../README.md")
+
+<p>
+    <a asp-controller="Users" asp-action="List" class="btn btn-primary">To User List</a>
+</p>
+
