@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
-
+using UserManagement.Models;
 namespace UserManagement.WebMS.Controllers;
 
 [Route("users")]
