@@ -17,7 +17,7 @@ The users page contains 3 buttons below the user listing - **Show All**, **Activ
 * Active Only – This should show only users where their `IsActive` property is set to `true`
 * Non Active – This should show only users where their `IsActive` property is set to `false`
 
-## Kieran's notes
+#### Kieran's notes
 
 UserService now uses Linq for the Where clause in FilterByActive. 
 UsersController now uses UserManagement.Models to implement the users variable inside the List method.
@@ -25,6 +25,10 @@ UsersController now uses UserManagement.Models to implement the users variable i
 ### 2. User Model Properties (Standard)
 
 Add a new property to the `User` class in the system called `DateOfBirth` which is to be used and displayed in relevant sections of the app.
+
+#### Kieran's notes
+
+Added System library to UserControllerTests so DateTime could be used
 
 ### 3. Actions Section (Standard)
 
