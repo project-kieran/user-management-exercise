@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Implementations;
@@ -12,7 +13,6 @@ public class UserServiceTests
         // Arrange: Initializes objects and sets the value of the data that is passed to the method under test.
         var service = CreateService();
         var users = SetupUsers();
-
         // Act: Invokes the method under test with the arranged parameters.
         var result = service.GetAll();
 
@@ -22,12 +22,14 @@ public class UserServiceTests
 
     private IQueryable<User> SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", bool isActive = true)
     {
+        DateTime dob = new DateTime(2000, 01, 01);
         var users = new[]
         {
             new User
             {
                 Forename = forename,
                 Surname = surname,
+                DateOfBirth = dob,
                 Email = email,
                 IsActive = isActive
             }
