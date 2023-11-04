@@ -31,7 +31,7 @@ public class UsersController : Controller
             Id = p.Id,
             Forename = p.Forename,
             Surname = p.Surname,
-            Dob = p.Dob,
+            DateOfBirth = p.DateOfBirth,
             Email = p.Email,
             IsActive = p.IsActive
         });
