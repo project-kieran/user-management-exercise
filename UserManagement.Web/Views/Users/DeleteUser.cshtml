@@ -1,0 +1,13 @@
+@model UserManagement.Web.Models.Users.DeleteUserViewModel
+
+<h2>Delete User</h2>
+
+@* Display a confirmation message before deleting the user *@
+
+<div>
+    <p>Are you sure you want to delete the user @Model.Forename @Model.Surname?</p>
+    <form asp-controller="Users" asp-action="Delete" method="post">
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>

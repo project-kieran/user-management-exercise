@@ -1,0 +1,16 @@
+@model UserManagement.Web.Models.Users.EditUserViewModel
+
+<h2>Edit User</h2>
+
+@* Form for editing an existing user *@
+
+<form asp-controller="Users" asp-action="Edit" method="post">
+    @* Populate the input fields with the existing user data *@
+    <input type="text" name="Forename" value="@Model.Forename" />
+    <input type="text" name="Surname" value="@Model.Surname" />
+    <input type="text" name="DateOfBirth" value="@Model.DateOfBirth" />
+    <input type="email" name="Email" value="@Model.Email" />
+    <input type="checkbox" name="IsActive" @(Model.IsActive ? "checked" : "") /> Active<br />
+
+    <button type="submit" class="btn btn-primary">Update User</button>
+</form>
