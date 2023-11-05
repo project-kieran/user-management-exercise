@@ -43,4 +43,116 @@ public class UsersController : Controller
 
         return View(model);
     }
+    [HttpGet]
+    public IActionResult Add()
+    {
+        return View(new AddUserViewModel());
+    }
+
+    [HttpPost]
+    public IActionResult Add(AddUserViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            // Convert AddUserViewModel to User entity and save to the database
+            var user = new User
+            {
+                Forename = model.Forename,
+                Surname = model.Surname,
+                DateOfBirth = model.DateOfBirth,
+                Email = model.Email,
+                IsActive = model.IsActive
+            };
+            _userService.Add(user);
+            return RedirectToAction("List");
+        }
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult View(long id)
+    {
+        var user = _userService.GetById(id);
+        if (user == null)
+        {
+            return RedirectToAction("List");
+        }
+
+        var viewModel = new ViewUserViewModel
+        {
+            Id = user.Id,
+            Forename = user.Forename,
+            Surname = user.Surname,
+            DateOfBirth = user.DateOfBirth,
+            Email = user.Email,
+            IsActive = user.IsActive
+        };
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Edit(long id)
+    {
+        var user = _userService.GetById(id);
+        if (user == null)
+        {
+            return RedirectToAction("List");
+        }
+
+        var viewModel = new EditUserViewModel
+        {
+            Id = user.Id,
+            Forename = user.Forename,
+            Surname = user.Surname,
+            DateOfBirth = user.DateOfBirth,
+            Email = user.Email,
+            IsActive = user.IsActive
+        };
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(EditUserViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = new User
+            {
+                Id = model.Id,
+                Forename = model.Forename!,
+                Surname = model.Surname!,
+                DateOfBirth = model.DateOfBirth,
+                Email = model.Email!,
+                IsActive = model.IsActive
+            };
+            _userService.Update(user);
+            return RedirectToAction("List");
+        }
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult Delete(long id)
+    {
+        var user = _userService.GetById(id);
+        if (user == null)
+        {
+            return RedirectToAction("List");
+        }
+
+        var viewModel = new DeleteUserViewModel
+        {
+            Id = user.Id,
+            Forename = user.Forename,
+            Surname = user.Surname
+        };
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(DeleteUserViewModel model)
+    {
+        _userService.Delete(model.Id);
+        return RedirectToAction("List");
+    }
 }
