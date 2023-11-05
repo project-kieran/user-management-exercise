@@ -57,10 +57,10 @@ public class UsersController : Controller
             // Convert AddUserViewModel to User entity and save to the database
             var user = new User
             {
-                Forename = model.Forename,
-                Surname = model.Surname,
+                Forename = model.Forename!,
+                Surname = model.Surname!,
                 DateOfBirth = model.DateOfBirth,
-                Email = model.Email,
+                Email = model.Email!,
                 IsActive = model.IsActive
             };
             _userService.Add(user);
