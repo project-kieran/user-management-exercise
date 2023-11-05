@@ -6,8 +6,8 @@
 
 <div>
     <p>Are you sure you want to delete the user @Model.Forename @Model.Surname?</p>
-    <form asp-controller="Users" asp-action="Delete" method="post">
-        <input type="hidden" name="UserId" value="@Model.UserId" />
+    <form asp-controller="Users" asp-action="DeleteUser" method="post">
+        <input type="hidden" name="UserId" value="@Model.Id" />
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 </div>

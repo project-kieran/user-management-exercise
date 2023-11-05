@@ -11,6 +11,7 @@ public class UsersController : Controller
     public UsersController(IUserService userService) => _userService = userService;
 
     [HttpGet]
+    ///[Route("List/{filter}")]
     public ViewResult List(string filter)
     {
         IEnumerable<User> users;
@@ -44,13 +45,15 @@ public class UsersController : Controller
         return View(model);
     }
     [HttpGet]
-    public IActionResult Add()
+    [Route("AddUser")]
+    public IActionResult AddUser()
     {
         return View(new AddUserViewModel());
     }
 
     [HttpPost]
-    public IActionResult Add(AddUserViewModel model)
+    [Route("AddUser")]
+    public IActionResult AddUser(AddUserViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -70,7 +73,8 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public IActionResult View(long id)
+    [Route("ViewUser/{id}")]
+    public IActionResult ViewUser(long id)
     {
         var user = _userService.GetById(id);
         if (user == null)
@@ -91,7 +95,8 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public IActionResult Edit(long id)
+    [Route("EditUser/{id}")]
+    public IActionResult EditUser(long id)
     {
         var user = _userService.GetById(id);
         if (user == null)
@@ -112,7 +117,8 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(EditUserViewModel model)
+    [Route("EditUser/{id}")]
+    public IActionResult EditUser(EditUserViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -132,7 +138,8 @@ public class UsersController : Controller
     }
 
     [HttpGet]
-    public IActionResult Delete(long id)
+    [Route("DeleteUser/{id}")]
+    public IActionResult DeleteUser(long id)
     {
         var user = _userService.GetById(id);
         if (user == null)
@@ -150,7 +157,8 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public IActionResult Delete(DeleteUserViewModel model)
+    [Route("DeleteUser/{id}")]
+    public IActionResult DeleteUser(DeleteUserViewModel model)
     {
         _userService.Delete(model.Id);
         return RedirectToAction("List");

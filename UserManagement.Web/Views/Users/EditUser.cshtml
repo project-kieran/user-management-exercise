@@ -19,7 +19,7 @@
 }
 @* Form for editing an existing user *@
 
-<form asp-controller="Users" asp-action="Edit" method="post">
+<form asp-controller="Users" asp-action="EditUser" method="post">
     @* Populate the input fields with the existing user data *@
     <input type="text" name="Forename" value="@Model.Forename" />
     <input type="text" name="Surname" value="@Model.Surname" />
