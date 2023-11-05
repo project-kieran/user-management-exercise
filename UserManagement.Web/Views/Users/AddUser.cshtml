@@ -1,7 +1,22 @@
 @model UserManagement.Web.Models.Users.AddUserViewModel
 
 <h2>Add User</h2>
+@* Display validation messages *@
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            }
+        </ul>
+    </div>
+}
 @* Form for adding a new user *@
 
 <form asp-controller="Users" asp-action="Add" method="post">

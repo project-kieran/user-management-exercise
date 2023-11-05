@@ -1,7 +1,22 @@
 @model UserManagement.Web.Models.Users.EditUserViewModel
 
 <h2>Edit User</h2>
+@* Display validation messages *@
 
+@if (!ViewData.ModelState.IsValid)
+{
+        <div class="alert alert-danger">
+            <ul>
+            @foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                                <li>@error.ErrorMessage</li>
+                }
+            }
+            </ul>
+        </div>
+}
 @* Form for editing an existing user *@
 
 <form asp-controller="Users" asp-action="Edit" method="post">
