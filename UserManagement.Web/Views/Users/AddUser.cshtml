@@ -1,0 +1,16 @@
+@model UserManagement.Web.Models.Users.AddUserViewModel
+
+<h2>Add User</h2>
+
+@* Form for adding a new user *@
+
+<form asp-controller="Users" asp-action="Add" method="post">
+    @* Include necessary input fields for adding a new user *@
+    <input type="text" name="Forename" placeholder="Forename" />
+    <input type="text" name="Surname" placeholder="Surname" />
+    <input type="text" name="DateOfBirth" placeholder="Date of Birth" />
+    <input type="email" name="Email" placeholder="Email" />
+    <input type="checkbox" name="IsActive" /> Active<br />
+
+    <button type="submit" class="btn btn-primary">Add User</button>
+</form>

@@ -1,0 +1,13 @@
+@model UserManagement.Web.Models.Users.ViewUserViewModel
+
+<h2>User Details</h2>
+
+@* Display user details in a readable format *@
+
+<div>
+    <strong>Forename: </strong> @Model.Forename <br />
+    <strong>Surname: </strong> @Model.Surname <br />
+    <strong>Date of Birth: </strong> @Model.DateOfBirth <br />
+    <strong>Email: </strong> @Model.Email <br />
+    <strong>Active: </strong> @(Model.IsActive ? "Yes" : "No") <br />
+</div>
