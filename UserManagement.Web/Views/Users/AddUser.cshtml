@@ -20,12 +20,6 @@
 @* Form for adding a new user *@
 
 <form asp-controller="Users" asp-action="AddUser" method="post">
-    @* Include necessary input fields for adding a new user *@
-    @*<input type="text" name="Forename" placeholder="Forename" />
-    <input type="text" name="Surname" placeholder="Surname" />
-    <input type="text" name="DateOfBirth" placeholder="Date of Birth" />
-    <input type="email" name="Email" placeholder="Email" />
-    <input type="checkbox" name="IsActive" /> Active<br />*@
     <div>
         @Html.LabelFor(model => model.Forename)
         @Html.EditorFor(model => model.Forename)

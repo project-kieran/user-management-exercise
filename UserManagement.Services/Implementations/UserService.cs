@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UserManagement.Data;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
-using System;
 
 namespace UserManagement.Services.Domain.Implementations;
 
