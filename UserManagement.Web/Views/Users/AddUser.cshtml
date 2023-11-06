@@ -21,11 +21,38 @@
 
 <form asp-controller="Users" asp-action="AddUser" method="post">
     @* Include necessary input fields for adding a new user *@
-    <input type="text" name="Forename" placeholder="Forename" />
+    @*<input type="text" name="Forename" placeholder="Forename" />
     <input type="text" name="Surname" placeholder="Surname" />
     <input type="text" name="DateOfBirth" placeholder="Date of Birth" />
     <input type="email" name="Email" placeholder="Email" />
-    <input type="checkbox" name="IsActive" /> Active<br />
+    <input type="checkbox" name="IsActive" /> Active<br />*@
+    <div>
+        @Html.LabelFor(model => model.Forename)
+        @Html.EditorFor(model => model.Forename)
+        @Html.ValidationMessageFor(model => model.Forename)
+    </div>
 
+    <div>
+        @Html.LabelFor(model => model.Surname)
+        @Html.EditorFor(model => model.Surname)
+        @Html.ValidationMessageFor(model => model.Surname)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.DateOfBirth)
+        @Html.EditorFor(model => model.DateOfBirth)
+        @Html.ValidationMessageFor(model => model.DateOfBirth)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Email)
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.IsActive)
+        @Html.CheckBoxFor(model => model.IsActive)
+    </div>
     <button type="submit" class="btn btn-primary">Add User</button>
 </form>

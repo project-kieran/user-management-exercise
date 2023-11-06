@@ -8,12 +8,18 @@ public class User
 {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long Id { get; set; }
-    [Required(ErrorMessage = "Forename is required.")]
+    /// <summary>
+    /// [Required(ErrorMessage = "Forename is required.")]
+    /// </summary>
     public string Forename { get; set; } = default!;
-    [Required(ErrorMessage = "Surname is required.")]
+    /// <summary>
+    /// [Required(ErrorMessage = "Surname is required.")]
+    /// </summary>
     public string Surname { get; set; } = default!;
     public DateTime DateOfBirth { get; set; }
-    [Required(ErrorMessage = "Email is required.")]
+    /// <summary>
+    ///[Required(ErrorMessage = "Email is required.")]
+    /// </summary>
     public string Email { get; set; } = default!;
     public bool IsActive { get; set; }
 }

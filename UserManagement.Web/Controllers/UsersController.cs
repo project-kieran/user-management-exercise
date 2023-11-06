@@ -3,6 +3,7 @@ using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 using UserManagement.Models;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserManagement.WebMS.Controllers;
 
@@ -72,24 +73,9 @@ public class UsersController : Controller
                 _userService.Add(user);
                 return RedirectToAction("List");
             }
-            catch (ArgumentNullException ex)
+            catch (Exception)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                if (ex.ParamName == nameof(user.Forename))
-                {
-                    ModelState.AddModelError("Forename", ex.Message);
-                }
-                else if (ex.ParamName == nameof(user.Surname))
-                {
-                    ModelState.AddModelError("Surname", ex.Message);
-                }
-                else if (ex.ParamName == nameof(user.Email))
-                {
-                    ModelState.AddModelError("Email", ex.Message);
-                }
+                ModelState.AddModelError(string.Empty, "An error occurred while saving the user. Please check that the form is complete.");
             }
         }
         return View(model);
@@ -159,24 +145,9 @@ public class UsersController : Controller
                 _userService.Update(user);
                 return RedirectToAction("List");
             }
-            catch (ArgumentNullException ex)
+            catch (Exception)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                if (ex.ParamName == nameof(user.Forename))
-                {
-                    ModelState.AddModelError("Forename", ex.Message);
-                }
-                else if (ex.ParamName == nameof(user.Surname))
-                {
-                    ModelState.AddModelError("Surname", ex.Message);
-                }
-                else if (ex.ParamName == nameof(user.Email))
-                {
-                    ModelState.AddModelError("Email", ex.Message);
-                }
+                ModelState.AddModelError(string.Empty, "An error occurred while saving the user. Please check that the form is complete.");
             }
         }
         return View(model);
