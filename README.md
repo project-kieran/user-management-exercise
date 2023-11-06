@@ -42,7 +42,7 @@ Each of these screens should contain appropriate data validation, which is commu
 
 #### Kieran's notes
 
-This section is fully functional and tested, but I'm aware that it could be more visually pleasing and could use more user dialogs.
+This section is fully functional and tested, but I'm aware that it could be more visually pleasing and could use more user dialogs. Will return to add these if time allows.
 
 ### 4. Data Logging (Advanced)
 
