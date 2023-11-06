@@ -40,6 +40,10 @@ Create the code and UI flows for the following actions
 
 Each of these screens should contain appropriate data validation, which is communicated to the end user.
 
+#### Kieran's notes
+
+This section is fully functional and tested, but I'm aware that it could be more visually pleasing and could use more user dialogs.
+
 ### 4. Data Logging (Advanced)
 
 Extend the system to capture log information regarding primary actions performed on each user in the app.

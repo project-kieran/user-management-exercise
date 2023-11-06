@@ -20,27 +20,27 @@
 @* Form for adding a new user *@
 
 <form asp-controller="Users" asp-action="AddUser" method="post">
-    <div>
+    <div style="margin-bottom: 10px">
         @Html.LabelFor(model => model.Forename)
         @Html.EditorFor(model => model.Forename)
     </div>
 
-    <div>
+    <div style="margin-bottom: 10px">
         @Html.LabelFor(model => model.Surname)
         @Html.EditorFor(model => model.Surname)
     </div>
 
-    <div>
+    <div style="margin-bottom: 10px">
         @Html.LabelFor(model => model.DateOfBirth)
         @Html.EditorFor(model => model.DateOfBirth)
     </div>
 
-    <div>
+    <div style="margin-bottom: 10px">
         @Html.LabelFor(model => model.Email)
         @Html.EditorFor(model => model.Email)
     </div>
 
-    <div>
+    <div style="margin-bottom: 10px">
         @Html.LabelFor(model => model.IsActive)
         @Html.CheckBoxFor(model => model.IsActive)
     </div>
