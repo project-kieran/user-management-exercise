@@ -11,7 +11,12 @@ namespace UserManagement.WebMS.Controllers;
 public class UsersController : Controller
 {
     private readonly IUserService _userService;
-    public UsersController(IUserService userService) => _userService = userService;
+    private readonly ILoggingService _loggingService;
+    public UsersController(IUserService userService, ILoggingService loggingService)
+    {
+        _userService = userService;
+        _loggingService= loggingService;
+    }
 
     [HttpGet]
     public ViewResult List(string filter)
@@ -90,7 +95,7 @@ public class UsersController : Controller
         {
             return RedirectToAction("List");
         }
-
+        _loggingService.LogAction(currentUser.Id, $"Viewed user with ID {id}");
         var viewModel = new ViewUserViewModel
         {
             Id = user.Id,
@@ -178,5 +183,12 @@ public class UsersController : Controller
     {
         _userService.Delete(model.Id);
         return RedirectToAction("List");
+    }
+    [HttpGet]
+    [Route("Logs")]
+    public IActionResult Logs()
+    {
+        var logs = _loggingService.GetAllLogs();
+        return View(logs);
     }
 }
