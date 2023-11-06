@@ -2,6 +2,8 @@
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 using UserManagement.Models;
+using System;
+
 namespace UserManagement.WebMS.Controllers;
 
 [Route("users")]
@@ -11,7 +13,6 @@ public class UsersController : Controller
     public UsersController(IUserService userService) => _userService = userService;
 
     [HttpGet]
-    ///[Route("List/{filter}")]
     public ViewResult List(string filter)
     {
         IEnumerable<User> users;
@@ -66,8 +67,30 @@ public class UsersController : Controller
                 Email = model.Email!,
                 IsActive = model.IsActive
             };
-            _userService.Add(user);
-            return RedirectToAction("List");
+            try
+            {
+                _userService.Add(user);
+                return RedirectToAction("List");
+            }
+            catch (ArgumentNullException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                if (ex.ParamName == nameof(user.Forename))
+                {
+                    ModelState.AddModelError("Forename", ex.Message);
+                }
+                else if (ex.ParamName == nameof(user.Surname))
+                {
+                    ModelState.AddModelError("Surname", ex.Message);
+                }
+                else if (ex.ParamName == nameof(user.Email))
+                {
+                    ModelState.AddModelError("Email", ex.Message);
+                }
+            }
         }
         return View(model);
     }
@@ -119,7 +142,7 @@ public class UsersController : Controller
     [HttpPost]
     [Route("EditUser/{id}")]
     public IActionResult EditUser(EditUserViewModel model)
-    {
+    {        
         if (ModelState.IsValid)
         {
             var user = new User
@@ -131,8 +154,30 @@ public class UsersController : Controller
                 Email = model.Email!,
                 IsActive = model.IsActive
             };
-            _userService.Update(user);
-            return RedirectToAction("List");
+            try
+            {
+                _userService.Update(user);
+                return RedirectToAction("List");
+            }
+            catch (ArgumentNullException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                if (ex.ParamName == nameof(user.Forename))
+                {
+                    ModelState.AddModelError("Forename", ex.Message);
+                }
+                else if (ex.ParamName == nameof(user.Surname))
+                {
+                    ModelState.AddModelError("Surname", ex.Message);
+                }
+                else if (ex.ParamName == nameof(user.Email))
+                {
+                    ModelState.AddModelError("Email", ex.Message);
+                }
+            }
         }
         return View(model);
     }
