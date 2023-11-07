@@ -13,7 +13,7 @@ public class LoggingService : ILoggingService
         _logs = new List<LogEntry>();
     }
 
-    public void LogAction(string id, string action)
+    public void LogAction(long id, string action)
     {
         var logEntry = new LogEntry
         {

@@ -10,6 +10,6 @@ public class LogListViewModel
 public class LogEntryViewModel
 {
     public long Id { get; set; }
-    public string Action { get; set; }
     public DateTime Timestamp { get; set; }
+    public string? Action { get; set; }
 }

@@ -3,7 +3,6 @@ using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 using UserManagement.Models;
 using System;
-using Microsoft.EntityFrameworkCore;
 
 namespace UserManagement.WebMS.Controllers;
 
@@ -95,7 +94,7 @@ public class UsersController : Controller
         {
             return RedirectToAction("List");
         }
-        _loggingService.LogAction("", $"Viewed user with ID {id}");//placeholder added until dummy user or authentication is implemented
+        _loggingService.LogAction(0, $"Viewed user with ID {id}");//placeholder added until dummy user or authentication is implemented
         var viewModel = new ViewUserViewModel
         {
             Id = user.Id,
@@ -148,8 +147,8 @@ public class UsersController : Controller
             try
             {
                 _userService.Update(user);
+                _loggingService.LogAction(0, $"Edited user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
                 return RedirectToAction("List");
-                _loggingService.LogAction("", $"Edited user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
             }
             catch (Exception)
             {
@@ -183,8 +182,8 @@ public class UsersController : Controller
     public IActionResult DeleteUser(DeleteUserViewModel model)
     {
         _userService.Delete(model.Id);
+        _loggingService.LogAction(0, $"Deleted user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
         return RedirectToAction("List");
-        _loggingService.LogAction("", $"Deleted user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
     }
     [HttpGet]
     [Route("Logs")]

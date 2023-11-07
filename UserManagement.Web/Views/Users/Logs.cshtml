@@ -1,4 +1,4 @@
-﻿@model UserManagement.Web.Models.Users.LogEntryViewModel
+﻿@model UserManagement.Web.Models.Users.LogListViewModel
 
 <h2>Logs</h2>
 
@@ -11,10 +11,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var log in Model)
+        @foreach (var log in Model.Items)
         {
         <tr>
-            <td>@log.UserId</td>
+            <td>@log.Id</td>
             <td>@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
             <td>@log.Action</td>
         </tr>

@@ -5,7 +5,7 @@ namespace UserManagement.Services.Domain.Interfaces;
 
 public interface ILoggingService
 {
-    void LogAction(string Id, string action);
+    void LogAction(long Id, string action);
     IEnumerable<LogEntry> GetAllLogs();
 }
 
