@@ -95,7 +95,7 @@ public class UsersController : Controller
         {
             return RedirectToAction("List");
         }
-        _loggingService.LogAction(currentUser.Id, $"Viewed user with ID {id}");
+        _loggingService.LogAction("", $"Viewed user with ID {id}");//placeholder added until dummy user or authentication is implemented
         var viewModel = new ViewUserViewModel
         {
             Id = user.Id,
@@ -149,6 +149,7 @@ public class UsersController : Controller
             {
                 _userService.Update(user);
                 return RedirectToAction("List");
+                _loggingService.LogAction("", $"Edited user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
             }
             catch (Exception)
             {
@@ -183,6 +184,7 @@ public class UsersController : Controller
     {
         _userService.Delete(model.Id);
         return RedirectToAction("List");
+        _loggingService.LogAction("", $"Deleted user with ID {model.Id}");//placeholder added until dummy user or authentication is implemented
     }
     [HttpGet]
     [Route("Logs")]
