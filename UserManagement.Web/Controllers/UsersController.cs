@@ -187,9 +187,23 @@ public class UsersController : Controller
     }
     [HttpGet]
     [Route("Logs")]
-    public IActionResult Logs()
+    public ViewResult Logs()
     {
         var logs = _loggingService.GetAllLogs();
-        return View(logs);
+
+        var logItems = logs.Select(log => new LogEntryViewModel
+        {
+            Id = log.Id,
+            Timestamp= log.Timestamp,
+            Action= log.Action
+        });
+
+        var model = new LogListViewModel
+        {
+            Items = logItems.ToList()
+        };
+
+        return View(model);
     }
+
 }
