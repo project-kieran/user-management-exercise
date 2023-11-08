@@ -7,7 +7,7 @@
 <div>
     <strong>Forename: </strong> @Model.Forename <br />
     <strong>Surname: </strong> @Model.Surname <br />
-    <strong>Date of Birth: </strong> @Model.DateOfBirth <br />
+    <strong>Date of Birth: </strong> @Model.DateOfBirth.ToString("dd/MM/yyyy") <br />
     <strong>Email: </strong> @Model.Email <br />
     <strong>Active: </strong> @(Model.IsActive ? "Yes" : "No") <br />
 </div>
