@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UserManagement.Data;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
@@ -25,6 +26,10 @@ public class LoggingService : ILoggingService
     public IEnumerable<LogEntry> GetAllLogs()
     {
         return _logs.GetAll<LogEntry>();
+    }
+    public IEnumerable<LogEntry> GetLogsByUserId(long id)
+    {
+        return _logs.GetAll<LogEntry>().Where(log => log.Id == id);
     }
 }
 

@@ -95,6 +95,18 @@ public class UsersController : Controller
             return RedirectToAction("List");
         }
         _loggingService.LogAction(0, $"Viewed user with ID {id}");//placeholder added until dummy user or authentication is implemented
+        var logs = _loggingService.GetLogsByUserId(id);
+
+        var logItems = logs.Select(log => new LogEntryViewModel
+        {
+            Id = log.Id,
+            Timestamp = log.Timestamp,
+            Action = log.Action
+        });
+        var listItems = new LogListViewModel
+        {
+            Items = logItems.ToList()
+        };
         var viewModel = new ViewUserViewModel
         {
             Id = user.Id,
@@ -102,7 +114,8 @@ public class UsersController : Controller
             Surname = user.Surname,
             DateOfBirth = user.DateOfBirth,
             Email = user.Email,
-            IsActive = user.IsActive
+            IsActive = user.IsActive,
+            Logs = listItems
         };
         return View(viewModel);
     }

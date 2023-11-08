@@ -7,5 +7,6 @@ public interface ILoggingService
 {
     void LogAction(long Id, string action);
     IEnumerable<LogEntry> GetAllLogs();
+    IEnumerable<LogEntry> GetLogsByUserId(long id);
 }
 

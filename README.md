@@ -44,17 +44,17 @@ Each of these screens should contain appropriate data validation, which is commu
 
 This section is fully functional and tested, but I'm aware that it could be more visually pleasing and could use more user dialogs. Will return to add these if time allows.
 
-### 4. Data Logging (Advanced)
+### 4. Data Logging (Advanced) - ATTEMPTED BUT NOT COMPLETED
 
 Extend the system to capture log information regarding primary actions performed on each user in the app.
-* In the **View** screen there should be a list of all actions that have been performed against that user. 
+* In the **View** screen there should be a list of all actions that have been performed against that user. - HALF IMPLEMENTED
 * There should be a new **Logs** page, containing a list of log entries across the application. - DONE
-* In the Logs page, the user should be able to click into each entry to see more detail about it.
+* In the Logs page, the user should be able to click into each entry to see more detail about it. - NOT IMPLEMENTED
 * In the Logs page, think about how you can provide a good user experience - even when there are many log entries. - DONE
 
 #### Kieran's notes
 
-jQuery added to Logs page to display logs in a more readable format.
+jQuery added to Logs page and ViewUser to display logs in a more readable format. Individual logs almost completed but failed to populate table. No errors at compile or runtime.
 
 ### 5. Extend the Application (Expert) - NOT COMPLETED
 
