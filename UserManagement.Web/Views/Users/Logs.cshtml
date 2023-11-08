@@ -1,24 +1,35 @@
 ﻿@model UserManagement.Web.Models.Users.LogListViewModel
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<h2> All Logs</h2>
 
-<h2>Logs</h2>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
-<table>
+<table id="logsTable">
     <thead>
         <tr>
-            <th>User ID</th>
-            <th>Timestamp</th>
-            <th>Action</th>
+            <th style = "padding-right: 10px;">User ID</th>
+            <th style="padding-right: 15px;">Timestamp</th>
+            <th style="padding-right: 10px;">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var log in Model.Items)
         {
         <tr>
-            <td>@log.Id</td>
-            <td>@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
-            <td>@log.Action</td>
+            <td style="padding-right: 10px;">@log.Id</td>
+            <td style="padding-right: 15px;">@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            <td style="padding-right: 10px;">@log.Action</td>
         </tr>
         }
     </tbody>
 </table>
+
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('#logsTable').DataTable();
+    });
+</script>
 

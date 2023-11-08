@@ -48,11 +48,15 @@ This section is fully functional and tested, but I'm aware that it could be more
 
 Extend the system to capture log information regarding primary actions performed on each user in the app.
 * In the **View** screen there should be a list of all actions that have been performed against that user. 
-* There should be a new **Logs** page, containing a list of log entries across the application.
+* There should be a new **Logs** page, containing a list of log entries across the application. - DONE
 * In the Logs page, the user should be able to click into each entry to see more detail about it.
-* In the Logs page, think about how you can provide a good user experience - even when there are many log entries.
+* In the Logs page, think about how you can provide a good user experience - even when there are many log entries. - DONE
 
-### 5. Extend the Application (Expert)
+#### Kieran's notes
+
+jQuery added to Logs page to display logs in a more readable format.
+
+### 5. Extend the Application (Expert) - NOT COMPLETED
 
 Make a significant architectural change that improves the application.
 Structurally, the user management application is very simple, and there are many ways it can be made more maintainable, scalable or testable.
@@ -62,6 +66,10 @@ Some ideas are:
 * Implement authentication and login based on the users being stored.
 * Implement bundling of static assets.
 * Update the data access layer to use a real database, and implement database schema migrations.
+
+#### Kieran's notes
+
+I ran out of time to try this exercise. If I attempted it, I would have aimed to use SQL Server and a Migrations file to change the data access layer, as I have done this before
 
 ## Additional Notes
 
