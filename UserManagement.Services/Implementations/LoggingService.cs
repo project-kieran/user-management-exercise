@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using UserManagement.Data;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 
 namespace UserManagement.Services.Implementations;
 public class LoggingService : ILoggingService
 {
-    private readonly List<LogEntry> _logs;
+    private readonly IDataContext _logs;
 
-    public LoggingService()
-    {
-        _logs = new List<LogEntry>();
-    }
-
+    public LoggingService(IDataContext logs) => _logs = logs;
+    
     public void LogAction(long id, string action)
     {
         var logEntry = new LogEntry
@@ -21,12 +19,12 @@ public class LoggingService : ILoggingService
             Timestamp = DateTime.Now,
             Action = action
         };
-        _logs.Add(logEntry);
+        _logs.Create(logEntry);
     }
 
     public IEnumerable<LogEntry> GetAllLogs()
     {
-        return _logs;
+        return _logs.GetAll<LogEntry>();
     }
 }
 
